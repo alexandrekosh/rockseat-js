@@ -33,7 +33,7 @@ const booksByCategory = [
                 author: "Augusto Cury",
             },
             {
-                title: "Ansiedade – Como enfrentar o mal do século",
+                title: "Ansiedade - Como enfrentar o mal do século",
                 author: "Augusto Cury",
             },
             {
@@ -45,7 +45,6 @@ const booksByCategory = [
 ];
 
 const totalCategories = booksByCategory.length
-
 console.log("Numeros de categorias " + totalCategories)
 
 for (const category of booksByCategory) {
@@ -54,9 +53,32 @@ for (const category of booksByCategory) {
 }
 
 function countAuthors() {
-    let authors = []
+    let authors = [];
 
     for (const category of booksByCategory) {
-        
+       for(let book of category.books) {
+            if(authors.indexOf(book.author) == -1) {
+                authors.push(book.author)
+            }
+       }
     }
+    
+    console.log("Total de Autores " + authors.length)
 }
+countAuthors()
+
+
+function booksOfAuthor(author) {
+    let books = [];
+
+    for (const category of booksByCategory) {
+       for(let book of category.books) {
+            if(book.author === author) {
+                books.push(book.title)
+            }
+       }
+    }
+
+    console.log(`Livros do Autor ${author}:  ${books.join(", ")}`)
+}
+booksOfAuthor("Augusto Cury")
